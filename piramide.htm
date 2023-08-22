@@ -30,4 +30,28 @@
     
     <h2>Resultado de la Traslación:</h2>
     <p id="resultadoTraslacion"></p>
-    
+        <script>
+        // Función para calcular los vértices de la pirámide
+        function vertices(lado, altura) {
+            return [
+                [0, 0, 0],
+                [lado, 0, 0],
+                [lado, 0, lado],
+                [0, 0, lado],
+                [lado / 2, altura, lado / 2]
+            ];
+        }
+
+        // Función para aplicar una traslación a la matriz de vértices
+        function traslacionPiramide(matrVert, vt) {
+            const nuevaMatriz = [];
+            for (let i = 0; i < matrVert.length; i++) {
+                const nuevoVertice = [
+                    matrVert[i][0] + vt[0],
+                    matrVert[i][1] + vt[1],
+                    matrVert[i][2] + vt[2]
+                ];
+                nuevaMatriz.push(nuevoVertice);
+            }
+            return nuevaMatriz;
+        }
