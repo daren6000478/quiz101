@@ -1,19 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-            <title>PIRAMIDE DAREN</title>
+    <title>Pirámide Recta</title>
     <style>
         canvas {
-            border: 2px solid red;
+            border: 1px solid black;
         }
     </style>
 </head>
-<body>  
-    <h1>PIRAMIDE DAREN</h1>
-    <canvas id="canvas" width="500" height="500"></canvas>
+<body>
+    <h1>Pirámide Recta</h1>
+    <canvas id="canvas" width="800" height="600"></canvas>
 
     <script>
         const canvas = document.getElementById("canvas");
@@ -28,10 +25,10 @@
                 [0, 0, lado],
                 [lado / 2, altura, lado / 2]
             ];
-        
         }
-       // Función para aplicar una traslación a la matriz de vértices
-       function traslacionPiramide(matrVert, vt) {
+
+        // Función para aplicar una traslación a la matriz de vértices
+        function traslacionPiramide(matrVert, vt) {
             const nuevaMatriz = [];
             for (let i = 0; i < matrVert.length; i++) {
                 const nuevoVertice = [
@@ -43,8 +40,35 @@
             }
             return nuevaMatriz;
         }
-          
-     </script>
-  <head>
-  </body>  
-  </body>       
+
+        // Definir las dimensiones y el vector de traslación
+        const ladoBase = 100;
+        const alturaPiramide = 150;
+        const vectorTraslacion = [200, 0, 200];
+
+        // Calcular los vértices de la pirámide y aplicar la traslación
+        const verticesBase = vertices(ladoBase, 0);
+        const verticesPiramide = traslacionPiramide(verticesBase, vectorTraslacion);
+
+        // Dibujar la pirámide en el lienzo
+        ctx.beginPath();
+        ctx.moveTo(verticesPiramide[0][0], verticesPiramide[0][2]);
+
+        for (let i = 1; i < verticesPiramide.length; i++) {
+            ctx.lineTo(verticesPiramide[i][0], verticesPiramide[i][2]);
+        }
+
+        ctx.closePath();
+        ctx.strokeStyle = "#000";
+        ctx.stroke();
+
+        for (let i = 0; i < verticesPiramide.length; i++) {
+            ctx.beginPath();
+            ctx.moveTo(verticesPiramide[i][0], verticesPiramide[i][2]);
+            ctx.lineTo(verticesPiramide[4][0], verticesPiramide[4][2]);
+            ctx.strokeStyle = "#000";
+            ctx.stroke();
+        }
+    </script>
+</body>
+</html>
