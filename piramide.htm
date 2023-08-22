@@ -28,9 +28,16 @@
     
     <button onclick="calcularTraslacion()">Calcular Traslación</button>
     
+    <h2>Vértices de Posición Inicial:</h2>
+    <p id="verticeInicial"></p>
+    
+    <h2>Vértices de Posición Final:</h2>
+    <p id="verticeFinal"></p>
+    
     <h2>Resultado de la Traslación:</h2>
     <p id="resultadoTraslacion"></p>
-        <script>
+    
+    <script>
         // Función para calcular los vértices de la pirámide
         function vertices(lado, altura) {
             return [
@@ -55,3 +62,22 @@
             }
             return nuevaMatriz;
         }
+
+        function calcularTraslacion() {
+            const ladoBase = parseFloat(document.getElementById("lado").value);
+            const alturaPiramide = parseFloat(document.getElementById("altura").value);
+            const traslacionX = parseFloat(document.getElementById("traslacionX").value);
+            const traslacionY = parseFloat(document.getElementById("traslacionY").value);
+            const traslacionZ = parseFloat(document.getElementById("traslacionZ").value);
+            
+            const verticesBase = vertices(ladoBase, 0);
+            const verticesTraslados = traslacionPiramide(verticesBase, [traslacionX, traslacionY, traslacionZ]);
+            
+            document.getElementById("verticeInicial").textContent = JSON.stringify(verticesBase);
+            document.getElementById("verticeFinal").textContent = JSON.stringify(verticesTraslados);
+            document.getElementById("resultadoTraslacion").textContent = JSON.stringify(verticesTraslados);
+        }
+    </script>
+</body>
+</html>
+
