@@ -1,74 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Pirámide Recta</title>
-    <style>
-        canvas {
-            border: 1px solid black;
-        }
-    </style>
+    <title>Traslación de Pirámide</title>
 </head>
 <body>
-    <h1>Pirámide Recta</h1>
-    <canvas id="canvas" width="800" height="600"></canvas>
-
-    <script>
-        const canvas = document.getElementById("canvas");
-        const ctx = canvas.getContext("2d");
-
-        // Función para calcular los vértices de la pirámide
-        function vertices(lado, altura) {
-            return [
-                [0, 0, 0],
-                [lado, 0, 0],
-                [lado, 0, lado],
-                [0, 0, lado],
-                [lado / 2, altura, lado / 2]
-            ];
-        }
-
-        // Función para aplicar una traslación a la matriz de vértices
-        function traslacionPiramide(matrVert, vt) {
-            const nuevaMatriz = [];
-            for (let i = 0; i < matrVert.length; i++) {
-                const nuevoVertice = [
-                    matrVert[i][0] + vt[0],
-                    matrVert[i][1] + vt[1],
-                    matrVert[i][2] + vt[2]
-                ];
-                nuevaMatriz.push(nuevoVertice);
-            }
-            return nuevaMatriz;
-        }
-
-        // Definir las dimensiones y el vector de traslación
-        const ladoBase = 100;
-        const alturaPiramide = 150;
-        const vectorTraslacion = [200, 0, 200];
-
-        // Calcular los vértices de la pirámide y aplicar la traslación
-        const verticesBase = vertices(ladoBase, 0);
-        const verticesPiramide = traslacionPiramide(verticesBase, vectorTraslacion);
-
-        // Dibujar la pirámide en el lienzo
-        ctx.beginPath();
-        ctx.moveTo(verticesPiramide[0][0], verticesPiramide[0][2]);
-
-        for (let i = 1; i < verticesPiramide.length; i++) {
-            ctx.lineTo(verticesPiramide[i][0], verticesPiramide[i][2]);
-        }
-
-        ctx.closePath();
-        ctx.strokeStyle = "#000";
-        ctx.stroke();
-
-        for (let i = 0; i < verticesPiramide.length; i++) {
-            ctx.beginPath();
-            ctx.moveTo(verticesPiramide[i][0], verticesPiramide[i][2]);
-            ctx.lineTo(verticesPiramide[4][0], verticesPiramide[4][2]);
-            ctx.strokeStyle = "#000";
-            ctx.stroke();
-        }
-    </script>
-</body>
-</html>
+    <h1>Traslación de Pirámide</h1>
+    
+    <label for="lado">Lado de la base:</label>
+    <input type="number" id="lado">
+    <br>
+    
+    <label for="altura">Altura de la pirámide:</label>
+    <input type="number" id="altura">
+    <br>
+    
+    <label for="traslacionX">Componente X del vector de traslación:</label>
+    <input type="number" id="traslacionX">
+    <br>
+    
+    <label for="traslacionY">Componente Y del vector de traslación:</label>
+    <input type="number" id="traslacionY">
+    <br>
+    
+    <label for="traslacionZ">Componente Z del vector de traslación:</label>
+    <input type="number" id="traslacionZ">
+    <br>
+    
+    <button onclick="calcularTraslacion()">Calcular Traslación</button>
+    
+    <h2>Resultado de la Traslación:</h2>
+    <p id="resultadoTraslacion"></p>
+    
