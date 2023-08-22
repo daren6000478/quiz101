@@ -7,11 +7,11 @@
             <title>PIRAMIDE DAREN</title>
     <style>
         canvas {
-            border: 3px solid red;
+            border: 2px solid red;
         }
     </style>
 </head>
-<body> 
+<body>  
     <h1>PIRAMIDE DAREN</h1>
     <canvas id="canvas" width="500" height="500"></canvas>
 
@@ -30,7 +30,21 @@
             ];
         
         }
-
+       // Función para aplicar una traslación a la matriz de vértices
+       function traslacionPiramide(matrVert, vt) {
+            const nuevaMatriz = [];
+            for (let i = 0; i < matrVert.length; i++) {
+                const nuevoVertice = [
+                    matrVert[i][0] + vt[0],
+                    matrVert[i][1] + vt[1],
+                    matrVert[i][2] + vt[2]
+                ];
+                nuevaMatriz.push(nuevoVertice);
+            }
+            return nuevaMatriz;
+        }
+          
      </script>
   <head>
+  </body>  
   </body>       
