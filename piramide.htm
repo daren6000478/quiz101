@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+            <title>PIRAMIDE DAREN</title>
+    <style>
+        canvas {
+            border: 3px solid red;
+        }
+    </style>
+</head>
+<body> 
+    <h1>PIRAMIDE DAREN</h1>
+    <canvas id="canvas" width="500" height="500"></canvas>
+
+    <script>
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+
+        // Función para calcular los vértices de la pirámide
+        function vertices(lado, altura) {
+            return [
+                [0, 0, 0],
+                [lado, 0, 0],
+                [lado, 0, lado],
+                [0, 0, lado],
+                [lado / 2, altura, lado / 2]
+            ];
+        
+        }
+
+     </script>
+  <head>
+  </body>       
